@@ -10,70 +10,70 @@ class Program
 
         int attempts = 0;
 
-            while (true)
+        while (true)
+        {
+            Console.WriteLine("Please select the difficulty level:");
+            Console.WriteLine("1. Easy   (10 chances)");
+            Console.WriteLine("2. Medium (5 chances)");
+            Console.WriteLine("3. Hard   (3 chances)");
+            Console.Write("\nEnter your choice: ");
+
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "exit")
+                return;
+
+            if (!int.TryParse(input, out int choice))
             {
-                Console.WriteLine("Please select the difficulty level:");
-                Console.WriteLine("1. Easy   (10 chances)");
-                Console.WriteLine("2. Medium (5 chances)");
-                Console.WriteLine("3. Hard   (3 chances)");
-                Console.Write("\nEnter your choice: ");
-
-                string input = Console.ReadLine();
-
-                if (input.ToLower() == "exit")
-                    return;
-
-                if (!int.TryParse(input, out int choice))
-                {
-                    Console.WriteLine("Invalid input! Please enter 1, 2, or 3.\n");
-                    continue;
-                }
-
-                if (choice == 1)
-                {
-                    attempts = 10;
-                    Console.WriteLine("\nGreat! You selected Easy difficulty.\n");
-                    break;
-                }
-                else if (choice == 2)
-                {
-                    attempts = 5;
-                    Console.WriteLine("\nGreat! You selected Medium difficulty.\n");
-                    break;
-                }
-                else if (choice == 3)
-                {
-                    attempts = 3;
-                    Console.WriteLine("\nGreat! You selected Hard difficulty.\n");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Please choose 1, 2, or 3.\n");
-                }
+                Console.WriteLine("Invalid input! Please enter 1, 2, or 3.\n");
+                continue;
             }
-            StartGame(attempts);
 
-            while (true)
+            if (choice == 1)
             {
-                Console.WriteLine("\nDo you want to play again? type 'yes' or 'no'");
-                string replay = Console.ReadLine().ToLower();
-
-                if (replay == "no" || replay == "exit")
-                {
-                    Console.WriteLine("Goodbye");
-                    return;
-                }
-                else if (replay == "yes")
-                {
-                    Console.Clear();
-                    break; 
-                }
-                else
-                {
-                    Console.WriteLine("\nPlease type 'yes' or 'no'.\n");
-                }
+                attempts = 10;
+                Console.WriteLine("\nGreat! You selected Easy difficulty.\n");
+                break;
             }
+            else if (choice == 2)
+            {
+                attempts = 5;
+                Console.WriteLine("\nGreat! You selected Medium difficulty.\n");
+                break;
+            }
+            else if (choice == 3)
+            {
+                attempts = 3;
+                Console.WriteLine("\nGreat! You selected Hard difficulty.\n");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Please choose 1, 2, or 3.\n");
+            }
+        }
+        StartGame(attempts);
+
+        while (true)
+        {
+            Console.WriteLine("\nDo you want to play again? type 'yes' or 'no'");
+            string replay = Console.ReadLine().ToLower();
+
+            if (replay == "no" || replay == "exit")
+            {
+                Console.WriteLine("Goodbye");
+                return;
+            }
+            else if (replay == "yes")
+            {
+                Console.Clear();
+                break;
+            }
+            else
+            {
+                Console.WriteLine("\nPlease type 'yes' or 'no'.\n");
+            }
+        }
     }
     static void StartGame(int attempts)
     {
@@ -107,7 +107,7 @@ class Program
             {
                 Console.WriteLine("Incorrect! The number is less than " + guess + "\n");
             }
-            else if(guess < secretNumber)
+            else if (guess < secretNumber)
             {
                 Console.WriteLine("Incorrect! The number is greater than " + guess + "\n");
             }
